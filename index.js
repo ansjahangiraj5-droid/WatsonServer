@@ -7,9 +7,10 @@ const cors    = require('cors');
 const { askGemini } = require('./gemini');
 
 // ── Constants ────────────────────────────────────────────────────────────────
-const PORT            = parseInt(process.env.PORT || '3001', 10);
+//const PORT            = parseInt(process.env.PORT || '3001', 10);
+const PORT = process.env.PORT || 3001;
 const HOST            = '127.0.0.1';                 
-const ALLOWED_ORIGIN  = ['http://localhost:5173', 'http://127.0.0.1:5173','https://watson-x.vercel.app/'];     
+const ALLOWED_ORIGIN  = ['http://localhost:5173', 'http://127.0.0.1:5173','https://watson-x.vercel.app'];     
 const MAX_QUESTION_LEN = 1000;                        
 const MAX_TICKETS      = 5000;                        
 
@@ -84,7 +85,8 @@ app.use((_req, res) => {
 
 // ── Start ─────────────────────────────────────────────────────────────────────
 app.listen(PORT, HOST, () => {
-  console.log(`[server] Listening on http://${HOST}:${PORT}`);
+  //console.log(`[server] Listening on http://${HOST}:${PORT}`);
+  console.log(`Server running on port ${PORT}`);
   console.log(`[server] CORS allowed origin: ${ALLOWED_ORIGIN}`);
   console.log(`[server] Model: Gemini-2.5-Flash`);
 });
